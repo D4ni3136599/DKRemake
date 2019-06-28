@@ -1,0 +1,18 @@
+Base Game:
+
+-Jumping (P)
+-Death (P)
+-Goal (P)
+-Climbing (P)
+-Ladders (L)
+-Platforms (L)
+-Barrels (L)
+
+Extra Stuff:
+
+-Hammers (L)
+-Oil (L)
+-Art(L)
+-Fire (L)
+-Score (P)
+-Blue Barrels (P)
