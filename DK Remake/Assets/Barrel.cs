@@ -6,7 +6,6 @@ public class Barrel : MonoBehaviour
 {
     Rigidbody rb;
     public float speed = 3;
-    int timer = 20;
     bool CoolDown;
 
     // Start is called before the first frame update
@@ -23,19 +22,7 @@ public class Barrel : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector3(speed, rb.velocity.y, 0);
-        if (!OnGround())
-        {
-            if (CoolDown)
-            {
-                CoolDown = false;
-                System.Func<bool> WaitUntil = (OnGround);
-                speed = speed * -1;
-            }
-        }
-        else
-        {
-            CoolDown = true;
-        }
+        //thing
     }
     private void OnDrawGizmos()
     {
