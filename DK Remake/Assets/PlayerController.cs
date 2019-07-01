@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// Preston
+// 6/28
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +19,13 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
+    void Death()
+    {
+        if (transform.position.y <= -16)
+        {
+            transform.position = new Vector3(0,-8,0);
+        }
+    }
     bool OnGround()
     {
         return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y / 2f + 0.1f);
@@ -24,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Death();
         Vector3 newVel = rb.velocity;
         if (Input.GetKey(left))
         {

@@ -9,7 +9,7 @@ using UnityEngine;
 public class Barrel : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed = 3;
+    public float speed = -3;
     bool CoolDown;
 
     // Start is called before the first frame update
@@ -19,23 +19,32 @@ public class Barrel : MonoBehaviour
     }
     bool OnGround()
     {
+        CoolDown = true;
         return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y / 2f + 0.1f);
+    }
+    void Death()
+    {
+        if (transform.position.y <= -16)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        Death();
         rb.velocity = new Vector3(speed, rb.velocity.y, 0);
-        if (!OnGround())
+        if (!CoolDown)
         {
-            if (CoolDown)
+            if (OnGround())
             {
                 speed = speed * -1;
             }
         }
-        else
+        if (!OnGround())
         {
-            CoolDown = true;
+            CoolDown = false;
         }
     }
     private void OnDrawGizmos()
