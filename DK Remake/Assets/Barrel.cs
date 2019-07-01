@@ -30,8 +30,7 @@ public class Barrel : MonoBehaviour
         {
             if (CoolDown)
             {
-
-                    speed = speed * -1;
+                speed = speed * -1;
             }
         }
         else
