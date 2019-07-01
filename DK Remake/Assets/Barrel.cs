@@ -29,6 +29,20 @@ public class Barrel : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        {
+            if (collision.collider.GetComponent<PlayerController>())
+            {
+                collision.collider.transform.position = new Vector3(0, -8, 0);
+                foreach (Transform child in transform.parent)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+            }
+        }
+    }
+
 
     // Update is called once per frame
     void Update()

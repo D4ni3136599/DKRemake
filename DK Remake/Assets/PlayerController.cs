@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject spawner;
     public KeyCode up = KeyCode.W;
     public KeyCode down = KeyCode.S;
     public KeyCode left = KeyCode.A;
@@ -24,6 +25,10 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y <= -16)
         {
             transform.position = new Vector3(0,-8,0);
+            foreach (Transform child in spawner.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
         }
     }
     bool OnGround()

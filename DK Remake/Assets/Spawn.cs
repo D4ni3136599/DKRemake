@@ -22,6 +22,7 @@ public class Spawn : MonoBehaviour
             timer = 6;
             GameObject newBullet = Instantiate(barrel);
             newBullet.transform.position = transform.position;
+            newBullet.transform.parent = gameObject.transform;
 
         }
     }
