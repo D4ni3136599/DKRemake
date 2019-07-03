@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Ladder" && Ladder == false && (Input.GetKey(climb) || Input.GetKey(down)))
         {
-            Ladder = true;
+                Ladder = true;
             collide = other.gameObject;
         }
     }
@@ -57,7 +57,9 @@ public class PlayerController : MonoBehaviour
 
     bool OnGround()
     {
-        return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y / 2f + 0.1f);
+        return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y / 2f + 0.1f)
+        || Physics.Raycast(transform.position + Vector3.right / 2f, Vector3.down, transform.localScale.y / 2f + 0.1f)
+        || Physics.Raycast(transform.position + Vector3.left / 2f, Vector3.down, transform.localScale.y / 2f + 0.1f);
     }
 
     void ladder()
@@ -78,8 +80,10 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(climb))
                 {
-                    rb.velocity = newVel;
-                    transform.position = new Vector3(x, y, z);
+                    {
+                        rb.velocity = newVel;
+                        transform.position = new Vector3(x, y, z);
+                    }
                 }
                 if (Input.GetKey(down))
                 {

@@ -11,6 +11,7 @@ public class Barrel : MonoBehaviour
     Rigidbody rb;
     public float speed = -6;
     bool CoolDown;
+    float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -51,13 +52,14 @@ public class Barrel : MonoBehaviour
         float dy = other.transform.position.y - transform.position.y;
         if (dy < -2.5f)
         {
-            if (Random.Range(0f, 2f) >= 1)
+            if (Random.Range(0f, 4f) >= 3)
             {
-                float x = transform.position.x;
-                float y = transform.position.y - 2;
+                float y = transform.position.y;
                 float z = transform.position.z;
+                float x = transform.position.x;
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
-                transform.position = new Vector3(x,y,z);
+                transform.position = new Vector3(x,y,z - 5);
+                timer = 0.5f;
             }
         }
     }
@@ -66,6 +68,14 @@ public class Barrel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timer < 0)
+       {
+            float y = transform.position.y;
+            float z = transform.position.z;
+            float x = transform.position.x;
+            transform.position = new Vector3(x, y, 0);
+       }
+        timer -= Time.deltaTime;
         Death();
         rb.velocity = new Vector3(speed, rb.velocity.y, 0);
         if (!CoolDown)

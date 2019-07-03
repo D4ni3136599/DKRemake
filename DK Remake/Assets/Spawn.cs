@@ -19,7 +19,7 @@ public class Spawn : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 1)
         {
-            timer = 3;
+            timer = 5;
             GameObject newBullet = Instantiate(barrel);
             newBullet.transform.position = transform.position;
             newBullet.transform.parent = gameObject.transform;
