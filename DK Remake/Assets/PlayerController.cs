@@ -22,12 +22,14 @@ public class PlayerController : MonoBehaviour
     bool Ladder;
     GameObject collide;
     public GameObject text;
+    public static int score;
 
     public int score = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        score = 0;
     }
     void Death()
     {
