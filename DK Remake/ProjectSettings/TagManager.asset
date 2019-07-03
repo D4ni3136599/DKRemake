@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Barrel
   - Ladder
+  - Platform
+  - Points
   layers:
   - Default
   - TransparentFX
