@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,8 +21,10 @@ public class PlayerController : MonoBehaviour
     float save;
     bool Ladder;
     GameObject collide;
+    public GameObject text;
 
-    // Start is called before the first frame update
+    public int score = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,11 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y <= -16)
         {
-            transform.position = new Vector3(0,-8,0);
-            foreach (Transform child in spawner.transform)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
         }
     }
     private void OnTriggerStay(Collider other)
@@ -43,6 +42,20 @@ public class PlayerController : MonoBehaviour
         {
                 Ladder = true;
             collide = other.gameObject;
+        }
+        if (other.name == "Win")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Points" && (rb.useGravity))
+        {
+            score += 100;
+            text.gameObject.GetComponent<Text>().text = "Score:"+ score.ToString();
+            
         }
     }
 
@@ -103,19 +116,17 @@ public class PlayerController : MonoBehaviour
             Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), false);
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
         ladder();
         Death();
         Vector3 newVel = rb.velocity;
-        if (Input.GetKey(left))
+        if (Input.GetKey(left) && OnGround())
         {
             Ladder = false;
             newVel.x = -speed;
         }
-        if (Input.GetKey(right))
+        if (Input.GetKey(right) && OnGround())
         {
             Ladder = false;
             newVel.x = speed;

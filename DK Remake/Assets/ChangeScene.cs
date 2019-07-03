@@ -12,7 +12,6 @@ public class ChangeScene : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("I pressed the Quit button. HAHAHAHAHA!");
         Application.Quit();
     }
 }

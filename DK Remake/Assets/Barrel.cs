@@ -38,11 +38,7 @@ public class Barrel : MonoBehaviour
         {
             if (collision.collider.GetComponent<PlayerController>())
             {
-                collision.collider.transform.position = new Vector3(0, -8, 0);
-                foreach (Transform child in transform.parent)
-                {
-                    GameObject.Destroy(child.gameObject);
-                }
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
             }
         }
     }
@@ -56,10 +52,10 @@ public class Barrel : MonoBehaviour
             {
                 float y = transform.position.y;
                 float z = transform.position.z;
-                float x = transform.position.x;
+                float x = transform.position.x + speed/12;
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
-                transform.position = new Vector3(x,y,z - 5);
-                timer = 0.5f;
+                transform.position = new Vector3(x, y, z - 5);
+                timer = 0.6f;
             }
         }
     }
@@ -69,12 +65,12 @@ public class Barrel : MonoBehaviour
     void Update()
     {
         if (timer < 0)
-       {
+        {
             float y = transform.position.y;
             float z = transform.position.z;
             float x = transform.position.x;
             transform.position = new Vector3(x, y, 0);
-       }
+        }
         timer -= Time.deltaTime;
         Death();
         rb.velocity = new Vector3(speed, rb.velocity.y, 0);
