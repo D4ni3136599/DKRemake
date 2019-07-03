@@ -20,11 +20,13 @@ public class PlayerController : MonoBehaviour
     float save;
     bool Ladder;
     GameObject collide;
+    public static int score;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        score = 0;
     }
     void Death()
     {

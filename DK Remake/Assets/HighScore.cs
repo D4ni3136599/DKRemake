@@ -13,13 +13,14 @@ public class HighScore : MonoBehaviour
         get
         {
             if (filename.EndsWith(".json"))
-                return Application.persistentDataPath + filename;
+                return Application.persistentDataPath + "\\" + filename;
             else
-                return Application.persistentDataPath + filename + ".json";
+                return Application.persistentDataPath + "\\" + filename + ".json";
         }
     }
     Text text;
 
+    [System.Serializable]
     public class Score
     {
         public string name;
@@ -30,11 +31,12 @@ public class HighScore : MonoBehaviour
             score = s;
         }
     }
+    [System.Serializable]
     public class Data
     {
         public List<Score> scores;
     }
-    Data data;
+    public Data data = new Data();
 
     void Start()
     {
@@ -44,6 +46,8 @@ public class HighScore : MonoBehaviour
         {
             Debug.LogError("HighScore must be attached to an object with Text!");
         }
+        AddScore("", PlayerController.score);
+        Save();
     }
 
     void Update()
@@ -92,13 +96,20 @@ public class HighScore : MonoBehaviour
 
     public void Load()
     {
-        StreamReader sr = new StreamReader(fullpath);
-        if (sr == null)
+        try
+        {
+            StreamReader sr = new StreamReader(fullpath);
+            if (sr == null)
+            {
+                Debug.LogError("Couldn't load path: " + fullpath);
+                return;
+            }
+            data = JsonUtility.FromJson<Data>(sr.ReadToEnd());
+            sr.Close();
+        }
+        catch
         {
             Debug.LogError("Couldn't load path: " + fullpath);
-            return;
         }
-        data = JsonUtility.FromJson<Data>(sr.ReadToEnd());
-        sr.Close();
     }
 }
