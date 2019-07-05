@@ -372,7 +372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Liam
+  m_Text: Liam Murray
 --- !u!222 &780308595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -679,7 +679,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Preston
+  m_Text: Preston Campbell
 --- !u!222 &1518206882
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Special thanks to Bryce
+  m_Text: Special thanks to Bryce Dixon
 --- !u!222 &2028797635
 CanvasRenderer:
   m_ObjectHideFlags: 0

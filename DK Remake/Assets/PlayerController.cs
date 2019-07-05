@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Ladder" && Ladder == false && (Input.GetKey(climb) || Input.GetKey(down)))
+        if (other.tag == "Ladder" && Ladder == false && OnGround() && (Input.GetKey(climb) || Input.GetKey(down)))
         {
                 Ladder = true;
             collide = other.gameObject;

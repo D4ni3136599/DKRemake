@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Digipen.unity
+    guid: f452ae693daa5ce4cbaa3043fea6d97b
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: faec973f4b4ae6a42b30959dc77a9658
