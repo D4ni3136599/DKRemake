@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y <= -16)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
         }
     }
     private void OnTriggerStay(Collider other)
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.name == "Win")
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("HighScore");
         }
     }
 

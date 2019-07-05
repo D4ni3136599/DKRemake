@@ -38,7 +38,7 @@ public class Barrel : MonoBehaviour
         {
             if (collision.collider.GetComponent<PlayerController>())
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
             }
         }
     }
